@@ -1,3 +1,4 @@
 rootProject.name = 'hall'
 
 include 'hall-user'
+include 'hall-admin'
