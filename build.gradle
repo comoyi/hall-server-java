@@ -12,7 +12,7 @@ buildscript {
 
 allprojects {
     group = 'com.comoyi.hall'
-    version = '0.0.1'
+    version = '0.0.1-SNAPSHOT'
 }
 
 subprojects {
@@ -24,8 +24,4 @@ subprojects {
         mavenCentral()
     }
 
-    dependencies {
-        compile('org.springframework.boot:spring-boot-starter')
-        testCompile('org.springframework.boot:spring-boot-starter-test')
-    }
 }
