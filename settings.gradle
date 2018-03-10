@@ -1,0 +1,3 @@
+rootProject.name = 'hall'
+
+include 'hall-user'
