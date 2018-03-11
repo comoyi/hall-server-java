@@ -1,0 +1,5 @@
+rootProject.name = 'hall'
+
+include 'hall-eureka-server'
+include 'hall-admin'
+include 'hall-user'
