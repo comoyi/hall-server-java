@@ -1,0 +1,11 @@
+server:
+  port: 8093
+
+spring:
+  application:
+    name: hall-eureka-server
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
