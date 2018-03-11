@@ -1,9 +1,9 @@
 server:
-  port: 8071
+  port: 8072
 
 spring:
   application:
-    name: hall-admin
+    name: hall-user
 
 eureka:
   client:
