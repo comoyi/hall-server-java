@@ -10,6 +10,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://127.0.0.1:8070/eureka
+      defaultZone: http://hall-eureka-server:8070/eureka
     instance:
-      hostname: 127.0.0.1
+      hostname: hall-admin
