@@ -14,7 +14,6 @@ services:
       - 8071:8070
     environment:
       - APP_PROFILES=1
-#      - spring.profiles.active=1
 
   hall-eureka-server-2:
     build: ./hall-eureka-server
@@ -26,7 +25,17 @@ services:
       - 8072:8070
     environment:
       - APP_PROFILES=2
-#      - spring.profiles.active=2
+
+  hall-eureka-server-3:
+    build: ./hall-eureka-server
+    image: comoyi/hall-eureka-server:0.0.1
+    networks:
+      - hall
+    hostname: hall-eureka-server-3
+    ports:
+      - 8073:8070
+    environment:
+      - APP_PROFILES=3
 
 # hall-admin
 
@@ -43,6 +52,7 @@ services:
     depends_on:
       - hall-eureka-server-1
       - hall-eureka-server-2
+      - hall-eureka-server-3
 
 networks:
   hall:
