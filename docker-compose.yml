@@ -1,0 +1,59 @@
+version: '2'
+
+services:
+
+# hall-eureka-server
+
+  hall-eureka-server-1:
+    build: ./hall-eureka-server
+    image: comoyi/hall-eureka-server:0.0.1
+    networks:
+      - hall
+    hostname: hall-eureka-server-1
+    ports:
+      - 8071:8070
+    environment:
+      - APP_PROFILES=1
+
+  hall-eureka-server-2:
+    build: ./hall-eureka-server
+    image: comoyi/hall-eureka-server:0.0.1
+    networks:
+      - hall
+    hostname: hall-eureka-server-2
+    ports:
+      - 8072:8070
+    environment:
+      - APP_PROFILES=2
+
+  hall-eureka-server-3:
+    build: ./hall-eureka-server
+    image: comoyi/hall-eureka-server:0.0.1
+    networks:
+      - hall
+    hostname: hall-eureka-server-3
+    ports:
+      - 8073:8070
+    environment:
+      - APP_PROFILES=3
+
+# hall-admin
+
+  hall-admin:
+    build: ./hall-admin
+    image: comoyi/hall-admin:0.0.1
+    networks:
+      - hall
+    hostname: hall-eureka-server-1
+    ports:
+      - 8091:8091
+    environment:
+      - APP_PROFILES=1
+    depends_on:
+      - hall-eureka-server-1
+      - hall-eureka-server-2
+      - hall-eureka-server-3
+
+networks:
+  hall:
+    driver: bridge
