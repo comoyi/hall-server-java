@@ -5,11 +5,3 @@ spring:
   application:
     name: hall-eureka-server
 
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://hall-eureka-server:8070/eureka
-    instance:
-      hostname: hall-eureka-server
