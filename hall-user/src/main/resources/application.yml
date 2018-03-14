@@ -1,15 +1,23 @@
 server:
-  port: 8092
+  port: 30301
 
 spring:
   application:
     name: hall-user
+  datasource:
+    url: jdbc:mysql://mysql-hall:3306/hall
+    username: root
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      use-new-id-generator-mappings: false
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://127.0.0.1:8070/eureka
+      defaultZone: http://hall-eureka-server-1:30101/eureka,http://hall-eureka-server-2:30101/eureka
     instance:
-      hostname: 127.0.0.1
+      hostname: hall-user

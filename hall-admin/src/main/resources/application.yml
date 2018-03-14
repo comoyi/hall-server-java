@@ -1,5 +1,5 @@
 server:
-  port: 8091
+  port: 30201
 
 spring:
   application:
@@ -10,6 +10,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://hall-eureka-server-1:8070/eureka,http://hall-eureka-server-2:8070/eureka
+      defaultZone: http://hall-eureka-server-1:30101/eureka,http://hall-eureka-server-2:30101/eureka
     instance:
       hostname: hall-admin

@@ -9,8 +9,9 @@ node {
         sh './gradlew build'
     }
     stage('Build docker image') {
-        sh 'docker build -t comoyi/hall-eureka-server:0.0.1 hall-eureka-server'
-        sh 'docker build -t comoyi/hall-admin:0.0.1 hall-admin'
+        sh 'docker build -t comoyi/hall-eureka-server:0.0.1 ./hall-eureka-server'
+        sh 'docker build -t comoyi/hall-admin:0.0.1 ./hall-admin'
+        sh 'docker build -t comoyi/hall-user:0.0.1 ./hall-user'
     }
     stage('Test') {
         // TODO
@@ -21,6 +22,7 @@ node {
             docker rm -f hall-eureka-server-2 || true
             docker rm -f hall-eureka-server-3 || true
             docker rm -f hall-admin || true
+            docker rm -f hall-user || true
         """
 
         sh """
@@ -32,7 +34,7 @@ node {
                 --name hall-eureka-server-1 \
                 --net hall \
                 --hostname hall-eureka-server-1 \
-                -p 8071:8070 \
+                -p 30101:30101 \
                 -e APP_PROFILES=1 \
                 -v ${workspace}/hall-eureka-server/build/libs:/data/app \
                 comoyi/hall-eureka-server:0.0.1
@@ -43,7 +45,7 @@ node {
                 --name hall-eureka-server-2 \
                 --net hall \
                 --hostname hall-eureka-server-2 \
-                -p 8072:8070 \
+                -p 30102:30101 \
                 -e APP_PROFILES=2 \
                 -v ${workspace}/hall-eureka-server/build/libs:/data/app \
                 comoyi/hall-eureka-server:0.0.1
@@ -54,7 +56,7 @@ node {
                 --name hall-eureka-server-3 \
                 --net hall \
                 --hostname hall-eureka-server-3 \
-                -p 8073:8070 \
+                -p 30103:30101 \
                 -e APP_PROFILES=3 \
                 -v ${workspace}/hall-eureka-server/build/libs:/data/app \
                 comoyi/hall-eureka-server:0.0.1
@@ -66,9 +68,19 @@ node {
                 --name hall-admin \
                 --net hall \
                 --hostname hall-admin \
-                -p 8091:8091 \
+                -p 30201:30201 \
                 -v ${workspace}/hall-admin/build/libs:/data/app \
                 comoyi/hall-admin:0.0.1
+        """
+
+        sh """
+            docker run -i -t -d \
+                --name hall-user \
+                --net hall \
+                --hostname hall-user \
+                -p 30301:30301 \
+                -v ${workspace}/hall-user/build/libs:/data/app \
+                comoyi/hall-user:0.0.1
         """
     }
     stage('Results') {
