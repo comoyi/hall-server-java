@@ -1,0 +1,6 @@
+server:
+  port: 30100
+
+spring:
+  application:
+    name: hall-eureka-server

@@ -1,0 +1,17 @@
+server:
+  port: 30100
+
+spring:
+  application:
+    name: hall-eureka-server
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.client.instance.hostname}:${server.port}/eureka
+    instance:
+      hostname: hall-eureka-server
+  server:
+    enable-self-preservation: false
