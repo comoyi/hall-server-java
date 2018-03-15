@@ -11,7 +11,7 @@ services:
       - hall
     hostname: hall-eureka-server-1
     ports:
-      - 30101:30101
+      - 30101:30100
     environment:
       - APP_PROFILES=1
 
@@ -22,7 +22,7 @@ services:
       - hall
     hostname: hall-eureka-server-2
     ports:
-      - 30102:30101
+      - 30102:30100
     environment:
       - APP_PROFILES=2
 
@@ -33,7 +33,7 @@ services:
       - hall
     hostname: hall-eureka-server-3
     ports:
-      - 30103:30101
+      - 30103:30100
     environment:
       - APP_PROFILES=3
 
@@ -46,7 +46,7 @@ services:
       - hall
     hostname: hall-admin
     ports:
-      - 30201:30201
+      - 30201:30200
     depends_on:
       - hall-eureka-server-1
       - hall-eureka-server-2
@@ -61,7 +61,7 @@ services:
       - hall
     hostname: hall-user
     ports:
-      - 30301:30301
+      - 30301:30300
     depends_on:
       - hall-eureka-server-1
       - hall-eureka-server-2

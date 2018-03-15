@@ -9,7 +9,7 @@ RUN mkdir /data/app
 
 ENV APP_NAME=hall-eureka-server
 ENV APP_VERSION=0.0.1-SNAPSHOT
-ENV APP_PORT=30101
+ENV APP_PORT=30100
 #ENV APP_PROFILES=
 
 #COPY build/libs/${APP_NAME}-${APP_VERSION}.jar /data/app
