@@ -10,7 +10,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.client.instance.hostname}:${server.port}/eureka
+      defaultZone: http://127.0.0.1:${server.port}/eureka
     instance:
       hostname: hall-eureka-server
   server:
