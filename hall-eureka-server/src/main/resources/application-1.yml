@@ -6,3 +6,5 @@ eureka:
       defaultZone: http://hall-eureka-server-2:${server.port}/eureka,http://hall-eureka-server-3:${server.port}/eureka
     instance:
       hostname: hall-eureka-server-1
+  server:
+    enable-self-preservation: false

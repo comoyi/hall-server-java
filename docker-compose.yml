@@ -11,7 +11,7 @@ services:
       - hall
     hostname: hall-eureka-server-1
     ports:
-      - 8071:8070
+      - 30101:30100
     environment:
       - APP_PROFILES=1
 
@@ -22,7 +22,7 @@ services:
       - hall
     hostname: hall-eureka-server-2
     ports:
-      - 8072:8070
+      - 30102:30100
     environment:
       - APP_PROFILES=2
 
@@ -33,7 +33,7 @@ services:
       - hall
     hostname: hall-eureka-server-3
     ports:
-      - 8073:8070
+      - 30103:30100
     environment:
       - APP_PROFILES=3
 
@@ -44,11 +44,24 @@ services:
     image: comoyi/hall-admin:0.0.1
     networks:
       - hall
-    hostname: hall-eureka-server-1
+    hostname: hall-admin
     ports:
-      - 8091:8091
-    environment:
-      - APP_PROFILES=1
+      - 30201:30200
+    depends_on:
+      - hall-eureka-server-1
+      - hall-eureka-server-2
+      - hall-eureka-server-3
+
+# hall-user
+
+  hall-user:
+    build: ./hall-user
+    image: comoyi/hall-user:0.0.1
+    networks:
+      - hall
+    hostname: hall-user
+    ports:
+      - 30301:30300
     depends_on:
       - hall-eureka-server-1
       - hall-eureka-server-2
