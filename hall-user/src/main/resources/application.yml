@@ -5,9 +5,8 @@ spring:
   application:
     name: hall-user
   datasource:
-#    url: jdbc:mysql://mysql-hall:3306/hall
-    url: jdbc:mysql://127.0.0.1:20101/hall
-#    url: jdbc:mysql://192.168.31.223:20101/hall
+    url: jdbc:mysql://mysql-hall:3306/hall
+#    url: jdbc:mysql://127.0.0.1:20101/hall
     username: root
     password: password
     driver-class-name: com.mysql.jdbc.Driver
