@@ -35,8 +35,8 @@ node {
                 --net hall \
                 --hostname hall-eureka-server-1 \
                 -p 30101:30100 \
-                -e APP_PROFILES=1 \
                 -v ${workspace}/hall-eureka-server/build/libs:/data/app \
+                -e APP_PROFILES=test,1 \
                 comoyi/hall-eureka-server:0.0.1
         """
 
@@ -46,8 +46,8 @@ node {
                 --net hall \
                 --hostname hall-eureka-server-2 \
                 -p 30102:30100 \
-                -e APP_PROFILES=2 \
                 -v ${workspace}/hall-eureka-server/build/libs:/data/app \
+                -e APP_PROFILES=test,2 \
                 comoyi/hall-eureka-server:0.0.1
         """
 
@@ -57,8 +57,8 @@ node {
                 --net hall \
                 --hostname hall-eureka-server-3 \
                 -p 30103:30100 \
-                -e APP_PROFILES=3 \
                 -v ${workspace}/hall-eureka-server/build/libs:/data/app \
+                -e APP_PROFILES=test,3 \
                 comoyi/hall-eureka-server:0.0.1
 
         """
@@ -70,6 +70,7 @@ node {
                 --hostname hall-admin \
                 -p 30201:30200 \
                 -v ${workspace}/hall-admin/build/libs:/data/app \
+                -e APP_PROFILES=test \
                 comoyi/hall-admin:0.0.1
         """
 
@@ -80,6 +81,7 @@ node {
                 --hostname hall-user \
                 -p 30301:30300 \
                 -v ${workspace}/hall-user/build/libs:/data/app \
+                -e APP_PROFILES=test \
                 comoyi/hall-user:0.0.1
         """
     }

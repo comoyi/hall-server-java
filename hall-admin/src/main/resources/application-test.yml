@@ -1,0 +1,15 @@
+server:
+  port: 30200
+
+spring:
+  application:
+    name: hall-admin
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://hall-eureka-server-1:30100/eureka,http://hall-eureka-server-2:30100/eureka,http://hall-eureka-server-3:30100/eureka
+    instance:
+      hostname: hall-admin
