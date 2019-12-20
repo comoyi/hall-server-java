@@ -1,27 +1,23 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.0.RELEASE'
     }
     repositories {
         mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
 allprojects {
+    plugins {
+        id 'java'
+    }
     group = 'com.comoyi.hall'
     version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '11'
 }
 
 subprojects {
-    apply plugin: 'java'
-
-    sourceCompatibility = 1.8
-
     repositories {
         mavenCentral()
     }
-
 }
+

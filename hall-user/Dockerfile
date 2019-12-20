@@ -1,4 +1,4 @@
-FROM openjdk:8u151-jdk-alpine3.7
+FROM openjdk:11.0.5-jdk
 
 LABEL maintainer="Michael Chi <chicong@outlook.com>"
 
