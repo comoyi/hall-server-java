@@ -1,10 +1,10 @@
-package com.comoyi.hall.admin;
+package com.comoyi.hall.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class AdminApplicationTests {
+public class ApiApplicationTests {
 
     @Test
     public void contextLoads() {

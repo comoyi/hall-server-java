@@ -4,12 +4,14 @@ node {
         sh 'pwd'
         def workspace = pwd()
         git 'https://github.com/comoyi/hall.git'
+        sh 'git pull'
     }
     stage('Build') {
         sh './gradlew build'
     }
     stage('Build docker image') {
         sh 'docker build -t comoyi/hall-eureka-server:0.0.1 ./hall-eureka-server'
+        sh 'docker build -t comoyi/hall-api:0.0.1 ./hall-api'
         sh 'docker build -t comoyi/hall-admin:0.0.1 ./hall-admin'
         sh 'docker build -t comoyi/hall-user:0.0.1 ./hall-user'
     }
@@ -21,6 +23,7 @@ node {
             docker rm -f hall-eureka-server-1 || true
             docker rm -f hall-eureka-server-2 || true
             docker rm -f hall-eureka-server-3 || true
+            docker rm -f hall-api || true
             docker rm -f hall-admin || true
             docker rm -f hall-user || true
         """
@@ -65,10 +68,21 @@ node {
 
         sh """
             docker run -i -t -d \
+                --name hall-api \
+                --net hall \
+                --hostname hall-api \
+                -p 30201:30200 \
+                -v ${workspace}/hall-api/build/libs:/data/app \
+                -e APP_PROFILES=test \
+                comoyi/hall-api:0.0.1
+        """
+
+        sh """
+            docker run -i -t -d \
                 --name hall-admin \
                 --net hall \
                 --hostname hall-admin \
-                -p 30201:30200 \
+                -p 30301:30300 \
                 -v ${workspace}/hall-admin/build/libs:/data/app \
                 -e APP_PROFILES=test \
                 comoyi/hall-admin:0.0.1
@@ -79,7 +93,7 @@ node {
                 --name hall-user \
                 --net hall \
                 --hostname hall-user \
-                -p 30301:30300 \
+                -p 30501:30500 \
                 -v ${workspace}/hall-user/build/libs:/data/app \
                 -e APP_PROFILES=test \
                 comoyi/hall-user:0.0.1

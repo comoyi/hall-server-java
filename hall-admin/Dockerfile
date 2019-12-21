@@ -1,4 +1,4 @@
-FROM openjdk:8u151-jdk-alpine3.7
+FROM openjdk:11.0.5-jdk
 
 LABEL maintainer="Michael Chi <chicong@outlook.com>"
 
@@ -9,7 +9,7 @@ RUN mkdir /data/app
 
 ENV APP_NAME=hall-admin
 ENV APP_VERSION=0.0.1-SNAPSHOT
-ENV APP_PORT=30200
+ENV APP_PORT=30300
 #ENV APP_PROFILES=
 
 #COPY build/libs/${APP_NAME}-${APP_VERSION}.jar /data/app

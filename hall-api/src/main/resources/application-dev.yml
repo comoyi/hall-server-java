@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: hall-admin
+    name: hall-api
 
 eureka:
   client:
@@ -12,4 +12,4 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:30100/eureka
     instance:
-      hostname: hall-admin
+      hostname: hall-api

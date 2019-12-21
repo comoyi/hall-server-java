@@ -2,7 +2,7 @@ version: '2'
 
 services:
 
-# hall-eureka-server
+  # hall-eureka-server
 
   hall-eureka-server-1:
     build: ./hall-eureka-server
@@ -37,14 +37,14 @@ services:
     environment:
       - APP_PROFILES=test,3
 
-# hall-admin
+  # hall-api
 
-  hall-admin:
-    build: ./hall-admin
-    image: comoyi/hall-admin:0.0.1
+  hall-api:
+    build: ./hall-api
+    image: comoyi/hall-api:0.0.1
     networks:
       - hall
-    hostname: hall-admin
+    hostname: hall-api
     ports:
       - 30201:30200
     environment:
@@ -54,7 +54,24 @@ services:
       - hall-eureka-server-2
       - hall-eureka-server-3
 
-# hall-user
+  # hall-admin
+
+  hall-admin:
+    build: ./hall-admin
+    image: comoyi/hall-admin:0.0.1
+    networks:
+      - hall
+    hostname: hall-admin
+    ports:
+      - 30301:30300
+    environment:
+      - APP_PROFILES=test
+    depends_on:
+      - hall-eureka-server-1
+      - hall-eureka-server-2
+      - hall-eureka-server-3
+
+  # hall-user
 
   hall-user:
     build: ./hall-user
@@ -63,7 +80,7 @@ services:
       - hall
     hostname: hall-user
     ports:
-      - 30301:30300
+      - 30501:30500
     environment:
       - APP_PROFILES=test
     depends_on:
