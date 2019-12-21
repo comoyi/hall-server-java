@@ -9,7 +9,7 @@ RUN mkdir /data/app
 
 ENV APP_NAME=hall-admin
 ENV APP_VERSION=0.0.1-SNAPSHOT
-ENV APP_PORT=30200
+ENV APP_PORT=30300
 #ENV APP_PROFILES=
 
 #COPY build/libs/${APP_NAME}-${APP_VERSION}.jar /data/app
