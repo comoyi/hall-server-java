@@ -4,6 +4,7 @@ node {
         sh 'pwd'
         def workspace = pwd()
         git 'https://github.com/comoyi/hall.git'
+        sh 'git pull'
     }
     stage('Build') {
         sh './gradlew build'
