@@ -4,6 +4,10 @@ node {
         sh 'pwd'
         def workspace = pwd()
         git 'https://github.com/comoyi/hall.git'
+
+        // switch branch
+        // sh 'git checkout develop'
+
         sh 'git pull'
     }
     stage('Build') {
